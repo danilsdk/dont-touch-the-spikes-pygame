@@ -67,12 +67,6 @@ class Game:
         self.bird = None
 
     def run(self):
-        for i in range(6):
-            self.spikes.append(
-                Obstacle([self.all_sprites, self.collision_sprites], self.scale_factor * 0.15, 'right'))
-        for i in range(6):
-            self.spikes.append(
-                Obstacle([self.all_sprites, self.collision_sprites], self.scale_factor * 0.15, 'left'))
 
         self.bg_color = 'light gray'
         self.bg_num = 0
@@ -141,10 +135,10 @@ class Game:
                 if last_rotation != self.bird.rotation:
                     for spike in self.spikes:
                         spike.kill()
-                    for i in range(6):
+                    for i in range(7):
                         self.spikes.append(
                             Obstacle([self.all_sprites, self.collision_sprites], self.scale_factor * 0.15, 'right'))
-                    for i in range(6):
+                    for i in range(7):
                         self.spikes.append(
                             Obstacle([self.all_sprites, self.collision_sprites], self.scale_factor * 0.15, 'left'))
 
@@ -180,6 +174,13 @@ class Game:
 
     def starting_screen(self):
         self.load_stats()
+
+        for i in range(7):
+            self.spikes.append(
+                Obstacle([self.all_sprites, self.collision_sprites], self.scale_factor * 0.15, 'right'))
+        for i in range(7):
+            self.spikes.append(
+                Obstacle([self.all_sprites, self.collision_sprites], self.scale_factor * 0.15, 'left'))
 
         self.bird = Bird(self.all_sprites, self.scale_factor / 3)
         ready = False
